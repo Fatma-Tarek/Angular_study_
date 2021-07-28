@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-servers',
+  selector: 'app-servers', //Recommended
+  //selector:'[app-servers]', //add like attribute inside app.component.html
+  //selector:'.app-servers', //add like class inside app.component.html
   templateUrl: './servers.component.html',
   /**************************
    * if you want add html inside ts so use template instead templateUrl

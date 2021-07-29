@@ -1,0 +1,29 @@
+<button class="btn btn-primary" (click)="ToggleParagraph()">Display Details</button>
+<p *ngIf="toggleParagraph">Secret Password = Tuna</p>
+<!---
+<div [ngStyle]="{'backgroundColor': color}" 
+     [ngClass]="{new: fifthElementFlag}"
+    *ngFor="let log of clicklog">
+    {{ log }} 
+    <br>
+ </div>
+-->
+
+<!--
+ <div
+     *ngFor="let log of clicklog" 
+     [ngStyle]="{'backgroundColor': log >= 5 ? 'blue' : 'transparent'}" 
+     [ngClass]="{new: log >= 5}"
+    >
+    {{ log }} 
+    <br>
+ </div>  -->
+
+ <div
+    *ngFor="let log of logg; let i = index" 
+    [ngStyle]="{'backgroundColor': i >= 5 ? 'blue' : 'white' }" 
+    [ngClass]="{new: i >= 5 }"
+>
+{{ log }} 
+<br>
+</div>

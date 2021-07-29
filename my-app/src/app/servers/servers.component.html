@@ -1,6 +1,40 @@
-<p>servers works!</p>
-<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onServerStatus()">Add Server</button>
-<p>{{serverStatus}}</p>
+<label>Server Name</label>
+<!--
+<input 
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)">
+-->
+
+<input 
+    type="text"
+    class="form-control"
+    [(ngModel)] = "serverName" autofocus>
+<!--
+<p> {{serverName}}</p>
+-->
+
+
+<button 
+    class="btn btn-primary" 
+    [disabled]="!allowNewServer" 
+    (click)="onServerStatus()"
+   >Add Server</button>
+
+<!--- Using Directive -->
+<p *ngIf="serverCreated else noServer">{{serverStatus}}</p>
+<ng-template #noServer>
+    <p>No server is created yet :( </p>
+</ng-template>
+
 <p [innerText]="allowNewServer"></p>
-<app-server></app-server>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <app-server *ngFor="let server of servers"></app-server>
+        </div>
+    </div>
+</div>
+
 <p>inside our servers</p>

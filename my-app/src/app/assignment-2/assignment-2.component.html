@@ -1,0 +1,8 @@
+<p>Hello</p>
+<input input="text"
+       class="form-input"
+       [(ngModel)] = "userName">
+<p [hidden]="!userName">Your Name is {{userName}}</p>
+
+
+<button [disabled]="!userName" (click)="onReset()">Click Me</button>

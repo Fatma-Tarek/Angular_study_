@@ -1,3 +1,5 @@
 
 <h4> Data Binding String interpolation </h4>
-<p> server with ID {{ serverId}} is {{ getServerStatus() }}</p>
+<p [ngStyle]="{backgroundColor: getColor() }"
+    [ngClass]="{online: serverStatus === 'online'}">
+ server with ID {{ serverId}} is {{ getServerStatus() }}</p>

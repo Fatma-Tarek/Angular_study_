@@ -1,0 +1,17 @@
+<div class="container">
+  <app-cokpit 
+  (serverCreated) ="onServerAdded($event)"
+  (bpCreated) ="onBlueprintAdded($event)"
+  ></app-cokpit>
+  <hr>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- pass element from app to child bs. app implement or host server-element -->
+      <!-- add alis for property binding -->
+      <app-server-element *ngFor="let serverElement of serverElements"
+      [srvElement]="serverElement"></app-server-element>
+    </div>
+  </div>
+ 
+</div>

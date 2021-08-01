@@ -11,6 +11,7 @@ export class CokpitComponent implements OnInit {
   @Output() serverCreated = new EventEmitter<{serverName: string , serverContent: string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string , serverContent: string}>();
   @ViewChild('serverContentInput', {static: true}) serverContentInput!: ElementRef ;
+  @ViewChild('serverNameInput', {static: true}) serverNameinput !: ElementRef;
   constructor() { }
 
   //newServerName = '';
@@ -38,7 +39,7 @@ export class CokpitComponent implements OnInit {
     console.log(this.serverContentInput.nativeElement.value);
     this.blueprintCreated.emit({
       serverName: this.serverContentInput.nativeElement.value,
-      serverContent: this.newServerContent
+      serverContent: this.serverNameinput.nativeElement.value
     })
   }
 

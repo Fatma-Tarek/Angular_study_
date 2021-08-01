@@ -14,9 +14,12 @@
       [srvElement]="serverElement"></app-server-element>
       -->
 
+
+      <button class="btn btn-primary" (click)="onChangeFirst()">Change First Element</button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first Component</button>
       <!-- Projecting content into componenrt with ng-content-->
-      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
-        <p>
+      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement" [name]="serverElement.name">
+        <p #contentParagraph>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
         </p>

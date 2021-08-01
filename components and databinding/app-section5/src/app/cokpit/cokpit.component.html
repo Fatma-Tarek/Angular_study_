@@ -2,15 +2,33 @@
     <div class="col-xs-12">
       <p>Add new Servers or blueprints!</p>
       <label>Server Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerName">
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> -->
+      <input type="text"
+              class="form-control"
+              #serverNameInput>
       <label>Server Content</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerContent">
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+      <input type="class"
+             class="form-control"
+             #serverContent>
       <br>
       <button
         class="btn btn-primary mx-2"
-        (click)="onAddServer()">Add Server</button>
+        (click)="onAddServer(serverNameInput)">Add Server</button>
       <button
         class="btn btn-primary"
-        (click)="onAddBlueprint()">Add Server Blueprint</button>
+        (click)="onAddBlueprint(serverContent)">Add Server Blueprint</button>
+
+        
+        <!-- add another way to use #localRefernce-->
+        <!--
+        <input type="class"
+             class="form-control"
+             #serverContentInput>
+        <button
+            class="btn btn-primary"
+            (click)="onAddBlueprint2()">Add Server Blueprint</button> -->
+      <br>
+        
     </div>
   </div>

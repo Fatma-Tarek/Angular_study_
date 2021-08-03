@@ -1,0 +1,5 @@
+<h3>Inactive Account </h3>
+<p *ngFor= "let account of inActiveAccount; let i = index"
+    (click)="changeStatus(i)"
+> 
+{{ account}} </p>

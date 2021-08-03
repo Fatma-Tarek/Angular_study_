@@ -5,12 +5,17 @@ import { LoggingService } from 'src/app/logging.service';
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
   styleUrls: ['./new-account.component.css'],
-  providers: [LoggingService],
+ // providers: [LoggingService],
 })
 export class NewAccountComponent implements OnInit {
   
   constructor(private loggingService: LoggingService,
-              private accountsService: AccountService) { }
+              private accountsService: AccountService) { 
+      
+        this.accountsService.statusUpdated.subscribe(
+          (status: string) => alert('New Status '+ status)
+        );
+              }
 
   ngOnInit(): void {
   }
@@ -18,7 +23,7 @@ export class NewAccountComponent implements OnInit {
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountsService.addAccount(accountName, accountStatus)
     /********** after anding instance of service ******/
-    this.loggingService.logStatusChange(accountStatus);
+   // this.loggingService.logStatusChange(accountStatus);
 
     /***********************************
     * To use Services

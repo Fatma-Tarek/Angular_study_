@@ -9,10 +9,14 @@ import { Recipe } from '../recipe.model';
 export class RecipeDetailComponent implements OnInit {
   @Input() recipeDetails !:Recipe;
   constructor() { }
+  statusOfDropDown= false;
 
   ngOnInit(): void {
   }
 
+  changeStatusDropdown(){
+    this.statusOfDropDown= !this.statusOfDropDown
+  }
   
 
 }

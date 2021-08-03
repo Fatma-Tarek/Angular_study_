@@ -67,10 +67,10 @@
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle navbar-right" href="#" id="navbardrop" data-toggle="dropdown">
+      <a class="nav-link dropdown-toggle navbar-right"  id="navbardrop" data-toggle="dropdown" appDropdown  #r="appDropdown">
        Manage
       </a>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" [ngClass]="{'show':r.isOpen}" >
         <a class="dropdown-item" href="#">Link 1</a>
         <a class="dropdown-item" href="#">Link 2</a>
         <a class="dropdown-item" href="#">Link 3</a>

@@ -11,6 +11,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+ 
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipeItemComponent,
-    DropdownDirective
+    DropdownDirective,
+    
      
     
   ],
@@ -32,7 +35,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     AppRoutingModule,
     
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

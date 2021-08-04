@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model'
+import { ShoppingListService } from '../shopping-list.service';
 
 
 @Component({
@@ -10,19 +11,25 @@ import { Ingredient } from 'src/app/shared/ingredient.model'
 export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput', {static:true}) ingredientName !: ElementRef;
   @ViewChild('amountInput', {static:true}) ingredientAmount !: ElementRef;
-  @Output() IngredientAdded = new EventEmitter<Ingredient>(); 
+ // @Output() IngredientAdded = new EventEmitter<Ingredient>(); 
 
-  constructor() { }
+  constructor(private shoppingList: ShoppingListService) { }
 
   ngOnInit(): void {
   }
 
-  addNewIngredient(){
-    //console.log(this.ingredientName.nativeElement.value);
-    const newIngredient = new Ingredient(this.ingredientName.nativeElement.value,this.ingredientAmount.nativeElement.value);
-    this.IngredientAdded.emit(newIngredient)
-  }
+  /****** Add new Ingredient using @ Output and @ Input  */
+  // addNewIngredient(){
+  //   //console.log(this.ingredientName.nativeElement.value);
+  //   const newIngredient = new Ingredient(this.ingredientName.nativeElement.value,this.ingredientAmount.nativeElement.value);
+  //   this.IngredientAdded.emit(newIngredient)
+  // }
 
+  /****** add new Ingredient using cross component */
+  addNewIngredient(){
+    const newIngredient = new Ingredient(this.ingredientName.nativeElement.value,this.ingredientAmount.nativeElement.value);
+    this.shoppingList.addNewIngredient(newIngredient)
+  }
 
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -8,7 +9,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipeDetails !:Recipe;
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
   statusOfDropDown= false;
 
   ngOnInit(): void {
@@ -16,6 +17,10 @@ export class RecipeDetailComponent implements OnInit {
 
   changeStatusDropdown(){
     this.statusOfDropDown= !this.statusOfDropDown
+  }
+
+  onAddToShoppingList(){
+    this.recipeService.addIngredientsToShoppingList(this.recipeDetails.ingredients);
   }
   
 

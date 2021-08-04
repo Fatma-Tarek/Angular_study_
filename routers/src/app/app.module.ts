@@ -14,6 +14,7 @@ import { ServersService } from 'src/app/servers/servers.service'
 import { FormsModule } from '@angular/forms';
 
 // will hold all my routes in my appplication
+// not to add / before routes ex: /users
 const appRoutes: Routes= [
   {path:'', component: HomeComponent },
   {path:'users', component: UsersComponent },

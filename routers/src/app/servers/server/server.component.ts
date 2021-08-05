@@ -9,7 +9,8 @@ import { ServersService } from '../servers.service';
 })
 export class ServerComponent implements OnInit {
 
-  server : any;
+  //server : any;
+  server: {id: number, name: string, status: string}
   status = false;
 
   constructor(private serversService: ServersService, 

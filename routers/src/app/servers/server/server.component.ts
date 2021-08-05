@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { ServersService } from '../servers.service';
+
 
 @Component({
   selector: 'app-server',
@@ -20,7 +21,9 @@ export class ServerComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.status = true;
+
+    /******** Another way : Load Component with data together*/
+    /*this.status = true;
     const id = this.route.snapshot.params['id'];
     // + will convert string to object
     this.server = this.serversService.getServer(+id);
@@ -29,7 +32,17 @@ export class ServerComponent implements OnInit {
         (params: Params)=>{
           // + will convert string to object
           this.server = this.serversService.getServer(+params['id']);
-        });
+        });*/
+
+
+      /***** will use reslover will load data before component */
+      // Retrive data from URL 
+      // it's important when we use asynchronously data 
+      this.route.data.subscribe(
+          (data: Data) =>{
+              this.server = data['server'];
+          }
+      )
   }
 
   editServer(){

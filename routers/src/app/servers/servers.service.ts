@@ -23,6 +23,7 @@ export class ServersService {
   
     getServer(id: number) {
       const server = this.servers.find(
+        //loop all for users 
         (s) => {
           return s.id === id;
         }

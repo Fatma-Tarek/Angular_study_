@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success btn-sm">New Recipe</button>
+        <button class="btn btn-success btn-sm" (click)="navigateToNewRecipe()">New Recipe</button>
     </div>
 </div>
 <hr>
@@ -18,10 +18,14 @@
 
 <!-- using cross component -->
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 ">
         <app-recipe-item
-            *ngFor="let recipeEl of recipes"
-            [recipeItems]="recipeEl" >
+            *ngFor="let recipeEl of recipes; let i = index"
+            [recipeItems]="recipeEl"
+            routerLink="{{i}}"
+            [index] = "i"
+            routerLinkActive ="active" 
+            [routerLinkActiveOptions]="{exact: true}">
         </app-recipe-item>
     </div>
 </div>

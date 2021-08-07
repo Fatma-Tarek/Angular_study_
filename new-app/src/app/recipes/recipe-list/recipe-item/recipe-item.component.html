@@ -1,4 +1,7 @@
-<a  class="list-group-item clearfix" (click)="sendRecipeItem()">
+<a  class="list-group-item clearfix rounded my-1" 
+    (click)="sendRecipeItem()" 
+    style="cursor: pointer;"
+    >
     <div class="pull-left" style="display:inline-block">
         <h5 class="list-group-item-heading">{{ recipeItems.name }}</h5>
         <p class="list-group-item-text">{{ recipeItems.description }}</p>

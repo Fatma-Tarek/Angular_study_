@@ -10,6 +10,7 @@ import { RecipeService } from '../../recipe.service';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipeItems !:Recipe;
+  @Input() index !: number;
   //@Output() recipeItem = new EventEmitter<Recipe>();
 
 

@@ -11,6 +11,7 @@ import { ShoppingListService } from '../shopping-list.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
+  @ViewChild('f') slForm: NgForm;
   //using Local Reference 
   //@ViewChild('nameInput', {static:true}) ingredientName !: ElementRef;
   //@ViewChild('amountInput', {static:true}) ingredientAmount !: ElementRef;
@@ -18,6 +19,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
+  editedItem: Ingredient;
+
   constructor(private shoppingList: ShoppingListService) { }
 
   ngOnInit(): void {
@@ -27,6 +30,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
           this.editedItemIndex = index;
           // To Know I can edit item or not 
           this.editMode = true;
+          this.editedItem=this.shoppingList.getIngredientById(index);
+          this.slForm.setValue({
+            name: this.editedItem.name,
+            amount: this.editedItem.amount
+          })
         });
   }
 

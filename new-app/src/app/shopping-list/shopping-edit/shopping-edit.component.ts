@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/shared/ingredient.model'
 import { ShoppingListService } from '../shopping-list.service';
 
@@ -9,15 +10,24 @@ import { ShoppingListService } from '../shopping-list.service';
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit {
+export class ShoppingEditComponent implements OnInit, OnDestroy {
   //using Local Reference 
   //@ViewChild('nameInput', {static:true}) ingredientName !: ElementRef;
   //@ViewChild('amountInput', {static:true}) ingredientAmount !: ElementRef;
  // @Output() IngredientAdded = new EventEmitter<Ingredient>(); 
-
+  subscription: Subscription;
+  editMode = false;
+  editedItemIndex: number;
   constructor(private shoppingList: ShoppingListService) { }
 
   ngOnInit(): void {
+    this.subscription = this.shoppingList.startEidting
+      .subscribe(
+        (index: number)=>{
+          this.editedItemIndex = index;
+          // To Know I can edit item or not 
+          this.editMode = true;
+        });
   }
 
   /****** Add new Ingredient using @ Output and @ Input  */
@@ -40,6 +50,10 @@ export class ShoppingEditComponent implements OnInit {
     const value = form.value;
     const newIngredient = new Ingredient(value.name,value.amount);
     this.shoppingList.addNewIngredient(newIngredient)
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

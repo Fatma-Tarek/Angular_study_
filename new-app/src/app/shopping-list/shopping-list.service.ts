@@ -4,7 +4,7 @@ import { Subject } from "rxjs";
 
 @Injectable()
 export class ShoppingListService {
-  
+  startEidting = new Subject<number>();
 
    private ingredients: Ingredient[] = [
         new Ingredient('Apples',5) ,

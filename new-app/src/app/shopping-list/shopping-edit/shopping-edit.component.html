@@ -35,7 +35,7 @@
 
 <div class="row">
     <div class="col-xs-12  mx-2">
-        <form (ngSubmit)="onAddItem(f)" #f="ngForm">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-xs-12  mx-3">
                         <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{ editMode ? 'Updated': 'Add'}}</button>
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <button class="btn btn-danger" type="submit" (click)="resetForm()">Delete</button>
                         <button class="btn btn-primary" type="submit">Clear</button>
                     </div>
                 </div>

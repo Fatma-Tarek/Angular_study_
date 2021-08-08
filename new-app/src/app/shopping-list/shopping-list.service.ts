@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class ShoppingListService {
@@ -13,15 +14,17 @@ export class ShoppingListService {
     // because we send a slice so a copy array not affected 
     // so we added event Emitter in class to resend in again 
     // to shopping list
-    ingredientChanged = new EventEmitter<Ingredient[]>();
-
+    //ingredientChanged = new EventEmitter<Ingredient[]>();
+    ingredientChanged = new Subject<Ingredient[]>();  
     getIngredients(){
         return this.ingredients.slice();
     }
 
     addNewIngredient(ingredient: Ingredient){
         this.ingredients.push(ingredient);
-        this.ingredientChanged.emit(this.ingredients.slice());
+        // for eventEmitter
+        // this.ingredientChanged.emit(this.ingredients.slice());
+        this.ingredientChanged.next(this.ingredients.slice());
     }
 
     addIngredients(ingredients: Ingredient[]){
@@ -30,7 +33,9 @@ export class ShoppingListService {
         // }
         //using ES6 to spread array into list
         this.ingredients.push(...ingredients);
-        this.ingredientChanged.emit(this.ingredients.slice());
+        //For Event Emitter
+        //this.ingredientChanged.emit(this.ingredients.slice());
+        this.ingredientChanged.next(this.ingredients.slice());
     }
 
 }

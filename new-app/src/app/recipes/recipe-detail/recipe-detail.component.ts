@@ -41,9 +41,9 @@ export class RecipeDetailComponent implements OnInit {
   */
 
   navigateToEditPage(){
-     // this.router.navigate(['edit'], {relativeTo: this.route})
+      this.router.navigate(['edit'], {relativeTo: this.route})
      // this.router.navigate(['../',this.route.snapshot.params['id'], 'edit' ], {relativeTo: this.route})
-      this.router.navigate(['../',this.id,'edit'], {relativeTo: this.route})
+     // this.router.navigate(['../',this.id,'edit'], {relativeTo: this.route})
   }
 
 }

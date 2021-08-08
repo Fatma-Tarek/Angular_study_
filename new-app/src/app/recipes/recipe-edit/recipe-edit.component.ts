@@ -19,10 +19,22 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params)=>{
+        this.id = +params['id']
           this.editMode = params['id'] != null;
           console.log(this.editMode);
+          console.log("id: "+this.id)
           this.initForm();
       });
+
+      
+     /* this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.editMode = params['id'] != null;
+          this.initForm();
+        }
+      );*/
   }
 
   private initForm(){
@@ -31,7 +43,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeDescription = '';
 
     if(this.editMode){
-      const recipe = this.recipeService.getRecipeDetails(this.id);
+      const recipe = this.recipeService.getRecipeDetails(+this.id);
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
@@ -42,6 +54,10 @@ export class RecipeEditComponent implements OnInit {
       'imagePath': new FormControl(recipeImagePath),
       'description': new FormControl(recipeDescription)
     })
+  }
+
+  onSubmit(){
+    console.log(this.recipeForm);
   }
 
 }

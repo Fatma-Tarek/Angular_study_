@@ -9,6 +9,7 @@ import { Recipe } from "./recipe.model";
 export class RecipeService {
     //recipeSelected = new EventEmitter<Recipe>();
     recipeSelected = new Subject<Recipe>();
+    recipeChanged = new Subject<Recipe[]>();
     constructor(private shoppingList: ShoppingListService){}
     
     private recipes:Recipe[] = [
@@ -28,6 +29,15 @@ export class RecipeService {
          return  this.recipes[id];
       }
 
+      addRecipe(recipe: Recipe){
+          this.recipes.push(recipe);
+          this.recipeChanged.next(this.recipes.slice())
+      }
+
+      updateRecipe(index: number, newRecipe: Recipe){
+          this.recipes[index] = newRecipe;
+          this.recipeChanged.next(this.recipes.slice())
+      }
 
 
 }

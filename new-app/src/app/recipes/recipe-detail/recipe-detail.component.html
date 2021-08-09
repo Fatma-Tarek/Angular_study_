@@ -36,7 +36,7 @@
             <ul class="dropdown-menu"  [ngClass]="{'show':r.isOpen}">
                 <li><a (click)= "onAddToShoppingList()" style="cursor: pointer;" >To shopping List</a></li>
                 <li><a (click)="navigateToEditPage()"> Edit Recipe</a></li>
-                <li><a>Delete Recipe</a></li>
+                <li><a (click)="deleteRecipe()">Delete Recipe</a></li>
             </ul>
         </div>
     </div>

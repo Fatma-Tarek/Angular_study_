@@ -40,4 +40,9 @@ export class RecipeService {
       }
 
 
+      onDelete(index: number){
+          this.recipes.splice(index,1);
+          this.recipeChanged.next(this.recipes.slice())
+      }
+
 }

@@ -12,10 +12,19 @@ export class RecipeService {
     recipeChanged = new Subject<Recipe[]>();
     constructor(private shoppingList: ShoppingListService){}
     
-    private recipes:Recipe[] = [
+
+    private recipesdd:Recipe[] = [
         new Recipe('Pasta','Pasta from Italy','https://tse3.mm.bing.net/th?id=OIP.2aSGFbADeNNBOy4FCo7myQEyDM&pid=Api&P=0&w=243&h=162',[new Ingredient('Meat',1) , new Ingredient('French Fries',20)]),
         new Recipe('Paste','German Pasta','https://tse3.mm.bing.net/th?id=OIP.2aSGFbADeNNBOy4FCo7myQEyDM&pid=Api&P=0&w=243&h=162', [new Ingredient('Meat',1) , new Ingredient('French Fries',20)])
       ];
+    
+
+      private recipes:Recipe[] =[];
+
+      setRecipes(recipes: Recipe[]){
+          this.recipes = recipes;
+          this.recipeChanged.next(this.recipes.slice());
+      }
 
       getRecipes(){
           return this.recipes.slice();

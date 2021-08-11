@@ -19,9 +19,8 @@
        Manage
       </a>
       <div class="dropdown-menu" [ngClass]="{'show':r.isOpen}" >
-        <a class="dropdown-item">Link 1</a>
-        <a class="dropdown-item">Link 2</a>
-        <a class="dropdown-item">Link 3</a>
+        <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+        <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
       </div>
     </li>
   </ul>

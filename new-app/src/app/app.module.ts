@@ -17,7 +17,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSnipperComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorsService } from './auth/auth-interceptor.service';
  
 
 
@@ -35,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http'
     ErrorPageComponent,
     RecipeStartComponent,
     RecipeEditComponent,
-   
+    AuthComponent,
+    LoadingSnipperComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,12 @@ import { HttpClientModule } from '@angular/common/http'
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService, RecipeService, 
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptorsService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

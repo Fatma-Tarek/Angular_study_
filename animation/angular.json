@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "11c88b7f-2096-47c6-b0ec-e1d8d33e44b4"
+    "analytics": "ff13071c-f06e-47ea-b7cd-dc9144adb104"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "http-request": {
+    "animation": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/http-request",
+            "outputPath": "dist/animation",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,14 +31,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js",
-              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -77,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "http-request:build:production"
+              "browserTarget": "animation:build:production"
             },
             "development": {
-              "browserTarget": "http-request:build:development"
+              "browserTarget": "animation:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "http-request:build"
+            "browserTarget": "animation:build"
           }
         },
         "test": {
@@ -111,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "http-request"
+  "defaultProject": "animation"
 }

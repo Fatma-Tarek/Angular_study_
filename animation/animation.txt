@@ -1,0 +1,11 @@
+in state: mean added to dom
+** element hasn't added yet to the the dom is void
+we use void to have an element in an end state which wasn't added to the dom at the beginning.
+** entering animation when we add a new item 
+i don't care what the initial state is 
+=======================================
+but it not work bs. void is special data.
+=========================================
+what if i want have both in same time
+pass array to group of animation syncronse
+

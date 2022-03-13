@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { LoggingInterceptorService } from './logging-interceptors.service';
 
+import {DataTablesModule} from 'angular-datatables';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { LoggingInterceptorService } from './logging-interceptors.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
   ],
   providers: [
     {
